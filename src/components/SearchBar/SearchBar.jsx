@@ -12,7 +12,7 @@ const SearchBar = (props) => {
 
     return (
         <div>
-            <input placeholder="Enter crypto here"  onBlur={getCoin}></input>
+            <input placeholder="Enter crypto here"  onBlur={getCoin} onChange={props.getSearchText}></input>
 
             <h1></h1>
         </div>
@@ -20,4 +20,3 @@ const SearchBar = (props) => {
 }
 
 export default SearchBar
-// onChange={getSearchText}
