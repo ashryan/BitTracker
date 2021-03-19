@@ -2,50 +2,58 @@ import logo from './logo.svg';
 import './App.scss';
 import CryptoCard from './components/CryptoCard/CryptoCard';
 import SearchBar from './components/SearchBar/SearchBar'
+import React, { useState, useEffect} from "react"
+import Button from '@material-ui/core/Button'
+import CardContent from '@material-ui/core/CardContent'
 
 function App() {
 
-
-let searchText = ''
-
-
-  const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&order=market_cap_desc&per_page=6487&page=1&sparkline=false&price_change_percentage=24h"
-
-
-  const getCoins = async () => {
-    //fetch data from url
-    const coinPromise = await fetch(url);
-    const coins = await coinPromise.json()
-    
-    return coins
-
-  }
-
-  getCoins()
-
-
-
-  
+  const [coins, setCoins] = useState(null)
   
 
-  const getInputFromSearch = (e) => {
-    searchText = e.target.value;
-    console.log(searchText)
-   
-    return searchText
-    }
-
-
-   
-
-
-
+   const [searchText, setSearchText] = useState('')
+ 
 
  
+    const baseUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&ids=&order=market_cap_desc&per_page=100&page=1&sparkline=false`
+    
+ 
+   
+    const getCoin = ()=> { 
+      fetch(baseUrl).then(res => {
+       return res.json()
+      }).then(data => {
+        setCoins(data)
+        return coins
+      })
+    }
+   
+
+
+    // const getSearchText = (event) => {
+    //   setSearchText(event.target.value)
+    //   console.log(searchText)
+    // }
+    
+  
+
+ 
+
+
   return (
     <div className="App">
-      <SearchBar getInput = {getInputFromSearch} searchText={searchText}/>
-      <CryptoCard   />
+
+    <SearchBar  getCoin = {getCoin} />
+     
+    {coins && coins.map((coin)=>{
+      
+      return (
+        <CryptoCard coin={coin}/>
+      )
+    })}
+
+ 
+   
     </div>
   );
 }
