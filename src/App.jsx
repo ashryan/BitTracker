@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.scss';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Portfolio from './components/Portfolio'
 
 import React, { useState, useEffect} from "react"
 
@@ -15,12 +17,21 @@ function App() {
 
 
   return (
-    <div className="App">
 
-    <CardDisplay />
- 
-   
-    </div>
+    <Router>
+      <div className="App">
+      <Switch>
+        <Route exact path="/" >
+          <CardDisplay />
+        </Route>
+        <Route exact path ="/portfolio">
+          <Portfolio />
+        </Route>
+
+      </Switch>
+    
+      </div>
+    </Router>
   );
 }
 

@@ -5,6 +5,7 @@ import CryptoCard from '../CryptoCard'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import coinSelection from "../../data/coin-selection.json"
+import { Link } from 'react-router-dom';
 
 
 const CardDisplay = () => {
@@ -74,6 +75,10 @@ const CardDisplay = () => {
             <CryptoCard coin={coin}  />
             )
         })}
+
+        <Link to="/portfolio">
+        <button></button>
+        </Link>
         </div>
     )
 }
