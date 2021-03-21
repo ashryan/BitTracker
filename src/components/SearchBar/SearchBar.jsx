@@ -12,7 +12,7 @@ const SearchBar = (props) => {
 
     return (
         <div>
-            <input placeholder="Enter crypto here"  onBlur={getCoin} onChange={props.getSearchText}></input>
+            <input placeholder="Enter crypto here"  onBlur={getCoin} onChange={getSearchText}></input>
 
             <h1></h1>
         </div>

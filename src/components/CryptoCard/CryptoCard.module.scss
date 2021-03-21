@@ -1,5 +1,10 @@
 
 
+.crypto-card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .crypto-card {
     height: 50%;
     width: 25%;
