@@ -1,12 +1,14 @@
-import React from 'react'
-import data from "../../../data/coin-selection.json"
+import React, { useEffect, useState }from 'react'
 import PortCryptoCard from "./PortCryptoCard"
 
-const PortCryptoList = () => {
+const PortCryptoList = (props) => {
+
+    
+
     return (
         <div>
             {
-                data.map((coin) => {
+                props.coins.map((coin) => {
                   return  <PortCryptoCard coin={coin} />
                 })
             }

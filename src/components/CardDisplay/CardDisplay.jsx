@@ -17,8 +17,7 @@ const CardDisplay = () => {
  
 
  
-    const baseUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&ids=${searchText}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-    
+    const baseUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&ids=&order=market_cap_desc&per_page=100&page=1&sparkline=false"
  
    
 
@@ -35,7 +34,9 @@ const CardDisplay = () => {
 
    const addCryptoToPort = (event) => {
 
-     coinSelection.push(event.target.value)
+    const selectedCoin = event.target.value
+    const selectedCoinID = selectedCoin.id
+    coinSelection.push(selectedCoinID)
      console.log(coinSelection)
 
    }
@@ -60,7 +61,7 @@ const CardDisplay = () => {
 
     return (
         <div>
-                <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} addCrypto = {addCryptoToPort} />
+                <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
         
         {coins && searchText.length > 0 && coins.filter(coin => coin.id === searchText).map(filteredCoins => 
         
@@ -72,7 +73,7 @@ const CardDisplay = () => {
     
         {coins && searchText.length === 0 && coins.map((coin) => {
             return (
-            <CryptoCard coin={coin}  />
+            <CryptoCard coin={coin}   />
             )
         })}
 

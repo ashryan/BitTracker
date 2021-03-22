@@ -11,7 +11,7 @@ const CryptoCard =  (props) => {
    
         const addFav = () => {
             coin.isFav = true;
-            cryptoPortData.push(coin)
+            cryptoPortData.push(coin.id)
             console.log(cryptoPortData)
         }
         
