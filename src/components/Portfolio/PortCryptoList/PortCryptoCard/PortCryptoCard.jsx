@@ -1,13 +1,18 @@
 import { StylesProvider } from '@material-ui/styles'
 import React, { useState, useRef } from 'react'
 import styles from "./PortCryptoCard.module.scss"
+import { LineChart, Line } from 'recharts';
 
 const PortCryptoCard = (props) => {
 
+    const sparkLineData = [{x:12, y:12, value:240}]
     
+    // sparkLineData.push(props.coin.sparkline_in_7d.price)
+    // console.log(sparkLineData)
+
     const [amount, setAmount] = useState(0)
    
-
+   
     const displayAmount = () => {
         const intValue = (parseInt(inputAmount.current.value))
         setAmount(intValue)
@@ -15,7 +20,6 @@ const PortCryptoCard = (props) => {
         console.log(inputAmount.current.value)
     }
 
-    console.log(props.coin.sparkline_in_7d)
     
     const inputAmount = useRef(null)
 
@@ -35,6 +39,9 @@ const PortCryptoCard = (props) => {
             <p>24hr Change: {props.coin.price_change_percentage_24h}%</p>
             <input onChange={displayAmount} type="number" ref={inputAmount}  placeholder={placeholderText}></input>
             <p>Your {props.coin.name} is worth £{amount * props.coin.current_price}</p>
+            <LineChart width={400} height={400} data={sparkLineData}>
+                    <Line type="monotone" dataKey="value" stroke="#8884d8" />
+            </LineChart>
         </div>
     )
 }
