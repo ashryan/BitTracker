@@ -14,6 +14,8 @@ const PortCryptoCard = (props) => {
         console.log(inputAmount)
         console.log(inputAmount.current.value)
     }
+
+    console.log(props.coin.sparkline_in_7d)
     
     const inputAmount = useRef(null)
 
@@ -29,6 +31,8 @@ const PortCryptoCard = (props) => {
         <div className={styles.cardDiv}>
             <h1>{props.coin.name}</h1>
             <p>Current Price: £{props.coin.current_price}</p>
+            {/* <p>1hr Change: {props.coin.price_change_percentage_1h_in_currency}%</p> */}
+            <p>24hr Change: {props.coin.price_change_percentage_24h}%</p>
             <input onChange={displayAmount} type="number" ref={inputAmount}  placeholder={placeholderText}></input>
             <p>Your {props.coin.name} is worth £{amount * props.coin.current_price}</p>
         </div>
