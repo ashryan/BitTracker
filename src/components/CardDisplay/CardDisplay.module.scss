@@ -1,4 +1,10 @@
 .cardGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width:80%
+}
+
+.outerContainer {
+    width:80%;
+    display: flex;
 }

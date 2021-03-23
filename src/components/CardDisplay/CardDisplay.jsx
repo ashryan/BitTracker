@@ -60,7 +60,7 @@ const CardDisplay = () => {
     }
 
     return (
-      <div>
+      <div className={styles.outerContainer}>
          <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
        
                    
@@ -69,14 +69,14 @@ const CardDisplay = () => {
             
             
             (
-                <CryptoCard coin={filteredCoins} getSearchText={getSearchText} addCrypto={addCryptoToPort} />
+               <span className={styles.cryptoCard}><CryptoCard coin={filteredCoins} getSearchText={getSearchText} addCrypto={addCryptoToPort} /></span> 
             )
             )}
            </div>
            <div className={styles.cardGrid}>
             {coins && searchText.length === 0 && coins.map((coin) => {
                 return ( 
-                <CryptoCard coin={coin}   />
+                  <span className={styles.cryptoCard}><CryptoCard coin={coin}   /></span>
                 
                 )
             })}

@@ -1,18 +1,34 @@
 
 
-.crypto-card-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
+
 
 .crypto-card {
-    height: 100%;
+    height: 95%;
     width: 80%;
     background-color: #f3e5f5;
     border: 2px solid #e1bee7;
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+
+    .card-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    
+
 
     h1 {
         font-size: 30px;
+    }
+
+    img {
+        height:35%;
+        width:35%;
+        margin-bottom: 20px;
     }
 
 }
