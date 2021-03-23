@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import coinSelection from "../../data/coin-selection.json"
 import { Link } from 'react-router-dom';
-
+import styles from "./CardDisplay.module.scss"
 
 const CardDisplay = () => {
 
@@ -60,26 +60,31 @@ const CardDisplay = () => {
     }
 
     return (
-        <div>
-                <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
-        
-        {coins && searchText.length > 0 && coins.filter(coin => coin.id === searchText).map(filteredCoins => 
-        
-        
-        (
-            <CryptoCard coin={filteredCoins} getSearchText={getSearchText} addCrypto={addCryptoToPort} />
-        )
-        )}
-    
-        {coins && searchText.length === 0 && coins.map((coin) => {
-            return (
-            <CryptoCard coin={coin}   />
+      <div>
+         <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
+       
+                   
+         <div className={styles.cardGrid}>
+            {coins && searchText.length > 0 && coins.filter(coin => coin.id === searchText).map(filteredCoins => 
+            
+            
+            (
+                <CryptoCard coin={filteredCoins} getSearchText={getSearchText} addCrypto={addCryptoToPort} />
             )
-        })}
-
-        <Link to="/portfolio">
-        <button></button>
-        </Link>
+            )}
+           </div>
+           <div className={styles.cardGrid}>
+            {coins && searchText.length === 0 && coins.map((coin) => {
+                return ( 
+                <CryptoCard coin={coin}   />
+                
+                )
+            })}
+            </div>
+          
+          <Link to="/portfolio">
+          <button></button>
+          </Link>
         </div>
     )
 }
