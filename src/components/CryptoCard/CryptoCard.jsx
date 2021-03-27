@@ -2,7 +2,7 @@ import React from 'react'
 import "./CryptoCard.module.scss"
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined'
 import cryptoPortData from "../../data/coin-selection.json"
-
+import Typography from "@material-ui/core/Typography"
 
 const CryptoCard =  (props) => {
 
@@ -18,15 +18,27 @@ const CryptoCard =  (props) => {
 
        return (
             <div className="crypto-card">
-
-                <div className="card-header"><h1>{coin.name}</h1>
                     <AddCircleOutlineOutlinedIcon onClick={addFav}/>
-                </div>
-                    <p>Symbol: {coin.symbol}</p>
-                    <p>Current Price: £{coin.current_price}</p>
-                    <p>All Time High: {coin.ath}</p>
-                    <p>Market Cap Rank: {coin.market_cap_rank}</p>
+                    <Typography variant="h3">
+                        {coin.name}
+                     </Typography>
+                    
+               
+                    <Typography gutterBottom="true" color="secondary">
+                     Symbol: {coin.symbol}
+                    </Typography>
+                    <Typography gutterBottom="true" color="secondary">
+                    Current Price: £{coin.current_price}
+                    </Typography>
+                    <Typography gutterBottom="true" color="secondary">
+                    All Time High: {coin.ath}
+                    </Typography>
+                    <Typography gutterBottom="true" color="secondary">
+                     Market Cap Rank: {coin.market_cap_rank}
+                    </Typography>
+                    
                     <img src={coin.image} alt="Coin"></img>
+                    
                    
                
                
