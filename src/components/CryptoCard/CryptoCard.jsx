@@ -18,8 +18,8 @@ const CryptoCard =  (props) => {
 
        return (
             <div className="crypto-card">
-                    <AddCircleOutlineOutlinedIcon onClick={addFav}/>
-                    <Typography variant="h3">
+                   
+                    <Typography color="textPrimary" variant="h3">
                         {coin.name}
                      </Typography>
                     
@@ -36,9 +36,8 @@ const CryptoCard =  (props) => {
                     <Typography gutterBottom="true" color="secondary">
                      Market Cap Rank: {coin.market_cap_rank}
                     </Typography>
-                    
                     <img src={coin.image} alt="Coin"></img>
-                    
+                    <AddCircleOutlineOutlinedIcon onClick={addFav}/>
                    
                
                

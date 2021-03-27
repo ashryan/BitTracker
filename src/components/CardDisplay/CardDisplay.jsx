@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar'
 import React, { useState, useEffect} from "react"
 import CryptoCard from '../CryptoCard'
 import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
+import { Card, Container } from '@material-ui/core/'
 import coinSelection from "../../data/coin-selection.json"
 import { Link } from 'react-router-dom';
 import styles from "./CardDisplay.module.scss"
@@ -60,15 +60,15 @@ const CardDisplay = () => {
     }
 
     return (
-      <div className={styles.outerContainer}>
+      <Container>
         <div>
           <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
             
-          <Link to="/portfolio">
-            <Button>Go to portfolio</Button>
+          <Link to="/portfolio" style={{textDecoration: 'none'}}>
+            <Button variant="outlined" color="primary">Go to portfolio</Button>
             </Link>
           </div>    
-         <div className={styles.cardGrid}>
+           
             {coins && searchText.length > 0 && coins.filter(coin => coin.id === searchText).map(filteredCoins => 
             
             
@@ -76,17 +76,20 @@ const CardDisplay = () => {
                <span className={styles.cryptoCard}><CryptoCard coin={filteredCoins} getSearchText={getSearchText} addCrypto={addCryptoToPort} /></span> 
             )
             )}
-           </div>
-           <div className={styles.cardGrid}>
+         
+
+         
+           
             {coins && searchText.length === 0 && coins.map((coin) => {
                 return ( 
                   <span className={styles.cryptoCard}><CryptoCard coin={coin}   /></span>
                 
                 )
             })}
-            </div>
+            
+            
          
-        </div>
+            </Container>
     )
 }
 
