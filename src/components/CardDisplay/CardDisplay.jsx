@@ -61,9 +61,13 @@ const CardDisplay = () => {
 
     return (
       <div className={styles.outerContainer}>
-         <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
-       
-                   
+        <div>
+          <SearchBar  getCoin = {getCoin} getSearchText={getSearchText} />
+            
+          <Link to="/portfolio">
+            <Button>Go to portfolio</Button>
+            </Link>
+          </div>    
          <div className={styles.cardGrid}>
             {coins && searchText.length > 0 && coins.filter(coin => coin.id === searchText).map(filteredCoins => 
             
@@ -81,10 +85,7 @@ const CardDisplay = () => {
                 )
             })}
             </div>
-          
-          <Link to="/portfolio">
-          <button></button>
-          </Link>
+         
         </div>
     )
 }
