@@ -39,9 +39,9 @@ const PortCryptoCard = (props) => {
             <p>24hr Change: {props.coin.price_change_percentage_24h}%</p>
             <input onChange={displayAmount} type="number" ref={inputAmount}  placeholder={placeholderText}></input>
             <p>Your {props.coin.name} is worth £{amount * props.coin.current_price}</p>
-            <LineChart width={400} height={400} data={sparkLineData}>
+            {/* <LineChart width={400} height={400} data={sparkLineData}>
                     <Line type="monotone" dataKey="value" stroke="#8884d8" />
-            </LineChart>
+            </LineChart> */}
         </div>
     )
 }
