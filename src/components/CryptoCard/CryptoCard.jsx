@@ -2,17 +2,34 @@ import React from 'react'
 import "./CryptoCard.module.scss"
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined'
 import cryptoPortData from "../../data/coin-selection.json"
-import Typography from "@material-ui/core/Typography"
+import { Typography, makeStyles } from "@material-ui/core"
+
+const useStyles = makeStyles({
+    icon: {
+      '&:hover':{
+        color: "pink",
+        cursor: "pointer"
+        
+      },
+    
+    iconClicked :{
+        color: "white"
+    }
+    }
+  })
+  
 
 const CryptoCard =  (props) => {
+
+    const classes = useStyles()
 
     const {coin, addCrypto} = props;
 
    
-        const addFav = () => {
+        const addFav = (e) => {
             coin.isFav = true;
             cryptoPortData.push(coin.id)
-            console.log(cryptoPortData)
+            alert(`${coin.name} added to portfolio`)
         }
         
 
@@ -37,7 +54,7 @@ const CryptoCard =  (props) => {
                      Market Cap Rank: {coin.market_cap_rank}
                     </Typography>
                     <img src={coin.image} alt="Coin"></img>
-                    <AddCircleOutlineOutlinedIcon onClick={addFav}/>
+                    <AddCircleOutlineOutlinedIcon className={classes.icon} color="action" fontSize="med" onClick={addFav}/>
                    
                
                
