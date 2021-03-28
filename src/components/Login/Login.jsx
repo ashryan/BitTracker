@@ -1,10 +1,10 @@
 import React from 'react'
+import { FormControl, Component } from '@material-ui/core'
+
 
 const Login = () => {
     return (
-        <div>
-            
-        </div>
+     <h1>hi</h1>  
     )
 }
 
