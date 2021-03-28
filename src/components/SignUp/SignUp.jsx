@@ -46,7 +46,8 @@ const SignUp = () => {
                     <Grid item xs={12}>
                         <Typography variant="h4" color="textPrimary">Sign Up</Typography>
                     </Grid>
-                    {error && <Alert>{error}</Alert>}
+                    {error && 
+                    <Grid item xs={12}><Alert severity="error">{error}</Alert></Grid>}
                     <Grid item xs={12}>
                         <TextField id="email" inputRef={emailRef} type="email" required label="Email" helperText="e.g John@example.com" />
                     </Grid>

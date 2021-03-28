@@ -26,7 +26,7 @@ function App() {
       <div className="App">
       <Switch>
         <Route exact path="/" >
-          <CardDisplay />
+          <SignUp />
         </Route>
         <Route exact path ="/portfolio">
           <Portfolio />
@@ -35,8 +35,8 @@ function App() {
           <Login />
 
         </Route>
-        <Route path = "/signup">
-          <SignUp />
+        <Route path = "/crypto">
+          <CardDisplay/>
         </Route>
 
       </Switch>
