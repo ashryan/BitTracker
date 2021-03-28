@@ -63,7 +63,7 @@ const SignUp = () => {
                         <Button type="submit" mt={3} disabled={loading} variant="contained" color="primary" >Submit</Button>
                     </Grid>
                     <Grid item xs={12}>
-                        <Typography gutterBottom mb={2} variant="body1">Already have an account? <Link to="/login">Click here </Link></Typography>
+                        <Typography gutterBottom mb={2} variant="body1">Already have an account? <Link to="/login"> Click here </Link></Typography>
                     </Grid>
                 </Grid>
 
