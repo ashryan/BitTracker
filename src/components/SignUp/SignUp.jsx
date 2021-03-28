@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Card, Container, Typography,  TextField, Grid, FormControl, InputLabel, Input, FormHelperText, Button } from '@material-ui/core'
 import { useAuth, AuthProvider } from '../../context/AuthContext/AuthContext'
 import Alert from "@material-ui/lab/Alert"
@@ -13,6 +13,7 @@ const SignUp = () => {
     const { signUp } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const history = useHistory()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -25,6 +26,7 @@ const SignUp = () => {
             setError('')
             setLoading(true)
             await signUp(emailRef.current.value, passRef.current.value)
+            history.push("/login")
         } catch(err) {
 
             console.log(err)
