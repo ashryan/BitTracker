@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Portfolio from './components/Portfolio'
+import Login from "./components/Login"
 
 import React, { useState, useEffect} from "react"
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
 
+
     <Router>
       <div className="App">
       <Switch>
@@ -26,6 +28,10 @@ function App() {
         </Route>
         <Route exact path ="/portfolio">
           <Portfolio />
+        </Route>
+        <Route path ="/login">
+          <Login />
+
         </Route>
 
       </Switch>
