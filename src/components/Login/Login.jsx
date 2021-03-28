@@ -4,7 +4,7 @@ import { FormControl, Component } from '@material-ui/core'
 
 const Login = () => {
     return (
-     <h1>hi</h1>  
+     <h1></h1>  
     )
 }
 
