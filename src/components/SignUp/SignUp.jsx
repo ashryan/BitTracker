@@ -1,46 +1,76 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Container, Typography,  TextField, Grid, FormControl, InputLabel, Input, FormHelperText, Button } from '@material-ui/core'
+import { useAuth, AuthProvider } from '../../context/AuthContext/AuthContext'
+import Alert from "@material-ui/lab/Alert"
 
 const SignUp = () => {
 
     const emailRef = useRef()
-    const nameRef = useRef()
-    const passRef = useRef()
 
+    const passRef = useRef()
+    const passConfRef = useRef()
+    const { signUp } = useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log(emailRef.current.value)
+        if (passRef.current.value !== passConfRef.current.value){
+            return setError('Passwords do not match')
+        }
+
+        try {
+            setError('')
+            setLoading(true)
+            await signUp(emailRef.current.value, passRef.current.value)
+        } catch(err) {
+
+            console.log(err)
+            setError('Failed to create an account')
+        }
+
+        setLoading(false)
+
+        
+    }
 
     return (
-        <Container>
-             <Card raised >
-            <form>
-            <Grid container spacing={1}>
-
-                <Grid item xs={12}>
-                    <Typography variant="h4" color="textPrimary">Sign Up</Typography>
+    
+            <Container>
+                <Card raised >
+                <form onSubmit={handleSubmit}>
+                <Grid container spacing={1}>
+                
+                    <Grid item xs={12}>
+                        <Typography variant="h4" color="textPrimary">Sign Up</Typography>
+                    </Grid>
+                    {error && <Alert>{error}</Alert>}
+                    <Grid item xs={12}>
+                        <TextField id="email" inputRef={emailRef} type="email" required label="Email" helperText="e.g John@example.com" />
+                    </Grid>
+                    
+                    <Grid item xs={12}>
+                        <TextField id="password" type="password" inputRef={passRef} required label="Password" h
+                    helperText="At least 8 characters" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField id="passwordConf" type="password" required label="Confirm Password" helperText="Must match" inputRef={passConfRef} />
+                    </Grid>
+                    <Grid  item xs={12}>
+                        <Button type="submit" mt={3} disabled={loading} variant="contained" color="primary" >Submit</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography gutterBottom mb={2} variant="body1">Already have an account? <Link to="/login">Click here </Link></Typography>
+                    </Grid>
                 </Grid>
 
-                <Grid item xs={12}>
-                    <TextField id="email" ref={emailRef} type="email" required label="Email" helperText="e.g John@example.com" />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField id="name" type="name" ref={nameRef} required label="Full Name"
-                helperText="John Smith" />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField id="password" type="password" ref={passRef} required label="Password" h
-                helperText="At least 8 characters" />
-                </Grid>
-                <Grid  item xs={12}>
-                    <Button mt={3} variant="contained" color="primary" >Submit</Button>
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography gutterBottom mb={2} variant="body1">Already have an account? <Link to="/login">Click here </Link></Typography>
-                </Grid>
-            </Grid>
-
-            </form>
-            </Card>
-        </Container>
+                </form>
+                </Card>
+            </Container>
+     
+       
     )
 }
 

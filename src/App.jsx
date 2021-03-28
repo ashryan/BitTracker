@@ -5,6 +5,7 @@ import Portfolio from './components/Portfolio'
 import Login from "./components/Login"
 import SignUp from "./components/SignUp"
 import React, { useState, useEffect} from "react"
+import { AuthProvider } from "./context/AuthContext/AuthContext"
 
 import CardDisplay from './components/CardDisplay';
 
@@ -19,6 +20,7 @@ function App() {
 
   return (
 
+    <AuthProvider>
 
     <Router>
       <div className="App">
@@ -41,6 +43,7 @@ function App() {
     
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
