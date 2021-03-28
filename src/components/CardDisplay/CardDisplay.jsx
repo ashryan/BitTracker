@@ -64,6 +64,10 @@ const CardDisplay = () => {
 
     return (
       <Container >
+
+    
+          
+
         <Grid container spacing={4}>
           <Grid item xs={12}>
           <TextField  label="Search for a Crypto" onChange={getSearchText}/>
