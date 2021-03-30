@@ -1,7 +1,7 @@
 import { StylesProvider } from '@material-ui/styles'
 import React, { useState, useRef } from 'react'
 import styles from "./PortCryptoCard.module.scss"
-import { Card, Grid, Container } from "@material-ui/core"
+import { Card, Grid, Container, Typography, TextField } from "@material-ui/core"
 import { LineChart, Line } from 'recharts';
 
 const PortCryptoCard = (props) => {
@@ -37,12 +37,12 @@ const PortCryptoCard = (props) => {
         <Grid container>
             <Grid item xs={12}>
             <Card variant="outlined" raised>
-                <h1>{props.coin.name}</h1>
-                <p>Current Price: £{props.coin.current_price}</p>
+                <Typography gutterBottom variant="h4">{props.coin.name}</Typography>
+                <Typography color="primary" gutterBottom>Current Price: £{props.coin.current_price}</Typography>
                 {/* <p>1hr Change: {props.coin.price_change_percentage_1h_in_currency}%</p> */}
-                <p>24hr Change: {props.coin.price_change_percentage_24h}%</p>
-                <input onChange={displayAmount} type="number" ref={inputAmount}  placeholder={placeholderText}></input>
-                <p>Your {props.coin.name} is worth £{amount * props.coin.current_price}</p>
+                <Typography  color="primary" gutterBottom>24hr Change: {props.coin.price_change_percentage_24h}%</Typography>
+                <TextField onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField>
+                <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth £{amount * props.coin.current_price}</Typography>
                 {/* <LineChart width={400} height={400} data={sparkLineData}>
                         <Line type="monotone" dataKey="value" stroke="#8884d8" />
                 </LineChart> */}
