@@ -2,9 +2,11 @@ import React from 'react'
 import "./CryptoCard.module.scss"
 import styles from "./CryptoCard.module.scss"
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined'
-import cryptoPortData from "../../data/coin-selection.json"
+import cryptoSelection from "../../data/coin-selection.json"
 import { Typography, makeStyles, Card } from "@material-ui/core"
 import { sizing } from '@material-ui/system';
+import { auth, db} from '../../firebase'
+ 
 
 const useStyles = makeStyles({
     icon: {
@@ -19,22 +21,32 @@ const useStyles = makeStyles({
     }
     }
   })
-  
 
+ 
+ 
+ 
 const CryptoCard =  (props) => {
 
     const classes = useStyles()
 
-    const {coin, addCrypto} = props;
+    const {coin, addCrypto, stagedCoins} = props;
 
-   
+      const currentUser = auth.currentUser.uid;
+     
+        // const addCoinToDB = () => {
+        //   db.collection('portfolio').doc(currentUser).set(coin.id)
+        // }
+ 
+       
         const addFav = (e) => {
-            coin.isFav = true;
-            cryptoPortData.push(coin.id)
-            alert(`${coin.name} added to portfolio`)
-        }
-        
+          coin.isFav = true;
+          cryptoSelection.push(coin.id)
 
+          console.log(cryptoSelection)
+          alert(`${coin.name} added to portfolio`)
+          // addCoinToDB()
+      }
+       
        return (
             <Card height={20} raised > 
                    

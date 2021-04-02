@@ -8,10 +8,14 @@ import coinSelection from "../../data/coin-selection.json"
 import { Link } from 'react-router-dom';
 import styles from "./CardDisplay.module.scss"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { db, auth } from "../../firebase"
 
 
 const CardDisplay = () => {
 
+  var stagedCoins = []
+
+ 
  
 
     const [coins, setCoins] = useState(null)
@@ -25,6 +29,16 @@ const CardDisplay = () => {
    
 
     useEffect(() => {
+
+      db.collection('portfolio').doc(auth.currentUser.uid).get().then((res)=>{
+
+        const formatData = res.data().coins.join(', ')
+         
+        coinSelection.push(formatData)
+        console.log(coinSelection)
+   
+      })
+
       fetch(baseUrl).then(res => {
         return res.json()
        }).then(data => {
@@ -39,11 +53,12 @@ const CardDisplay = () => {
 
     const selectedCoin = event.target.value
     const selectedCoinID = selectedCoin.id
-    coinSelection.push(selectedCoinID)
-     console.log(coinSelection)
+     stagedCoins.push(selectedCoinID)
+     console.log(stagedCoins)
 
    }
 
+ 
 
   
 
@@ -62,6 +77,14 @@ const CardDisplay = () => {
       console.log(searchText)
     }
 
+    const currentUser = auth.currentUser
+    console.log(currentUser)
+
+    const uploadCoins = () => {
+      
+      db.collection('portfolio').doc(currentUser.uid).set({coins: coinSelection})
+    }
+
     return (
       <Container >
 
@@ -74,7 +97,7 @@ const CardDisplay = () => {
           </Grid>
           <Grid item xs={12}>
           <Link to="/portfolio" style={{textDecoration: 'none'}}>
-            <Button endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" color="primary"><Typography variant="button" >Go to portfolio</Typography></Button>
+            <Button onClick={uploadCoins} endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" color="primary"><Typography variant="button" >Go to portfolio</Typography></Button>
             </Link>
             </Grid>
           
@@ -93,7 +116,7 @@ const CardDisplay = () => {
             {coins && searchText.length === 0 && coins.map((coin) => {
                 return ( 
                   <Grid item xl={3} md={4} xs={6} >
-                  <CryptoCard coin={coin}   />
+                  <CryptoCard stagedCoins={stagedCoins} coin={coin}   />
                   </Grid>
                 
                 )
