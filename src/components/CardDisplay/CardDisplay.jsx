@@ -13,6 +13,9 @@ import { db, auth } from "../../firebase"
 
 const CardDisplay = () => {
 
+  var stagedCoins = []
+
+ 
  
 
     const [coins, setCoins] = useState(null)
@@ -26,6 +29,16 @@ const CardDisplay = () => {
    
 
     useEffect(() => {
+
+      db.collection('portfolio').doc(auth.currentUser.uid).get().then((res)=>{
+
+        const formatData = res.data().coins.join(', ')
+         
+        coinSelection.push(formatData)
+        console.log(coinSelection)
+   
+      })
+
       fetch(baseUrl).then(res => {
         return res.json()
        }).then(data => {
@@ -40,11 +53,12 @@ const CardDisplay = () => {
 
     const selectedCoin = event.target.value
     const selectedCoinID = selectedCoin.id
-    coinSelection.push(selectedCoinID)
-     console.log(coinSelection)
+     stagedCoins.push(selectedCoinID)
+     console.log(stagedCoins)
 
    }
 
+ 
 
   
 
@@ -102,7 +116,7 @@ const CardDisplay = () => {
             {coins && searchText.length === 0 && coins.map((coin) => {
                 return ( 
                   <Grid item xl={3} md={4} xs={6} >
-                  <CryptoCard coin={coin}   />
+                  <CryptoCard stagedCoins={stagedCoins} coin={coin}   />
                   </Grid>
                 
                 )

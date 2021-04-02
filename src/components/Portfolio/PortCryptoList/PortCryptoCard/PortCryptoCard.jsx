@@ -55,12 +55,10 @@ const PortCryptoCard = (props) => {
                 <Typography  color="primary" gutterBottom>24hr Change: {props.coin.price_change_percentage_24h}%</Typography>
                 <TextField onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField>
                 <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth £{amount * props.coin.current_price}</Typography>
-                <Chart data={props.coin.sparkline_in_7d.price}>
-                    <ValueAxis />
-                    <LineSeries valueField="lineValue" />
+
             
 
-                </Chart>
+                
             </Card>
             </Grid>
             </Grid>
