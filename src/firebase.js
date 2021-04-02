@@ -1,18 +1,20 @@
 import firebase from "firebase/app"
 import "firebase/auth"
+import firestore from "firebase/firestore"
 
-const app = firebase.initializeApp({
+ export const app = firebase.initializeApp({
     apiKey: "AIzaSyCpapP_5i4HXcUGgzFacVVd5QE-SQnXwZs",
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGIN_SENDER,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID
+  authDomain: "bittracker-api.firebaseapp.com",
+  databaseURL: "https://bittracker-api-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bittracker-api",
+  storageBucket: "bittracker-api.appspot.com",
+  messagingSenderId: "746411061565",
+  appId: "1:746411061565:web:455a07e32b7f3b0eb79554"
 })
 
 export const auth = app.auth()
-export default app
+export const db = firebase.firestore()
+
 
 
 

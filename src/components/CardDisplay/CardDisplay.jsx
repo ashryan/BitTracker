@@ -8,6 +8,7 @@ import coinSelection from "../../data/coin-selection.json"
 import { Link } from 'react-router-dom';
 import styles from "./CardDisplay.module.scss"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { db, auth } from "../../firebase"
 
 
 const CardDisplay = () => {
@@ -62,6 +63,14 @@ const CardDisplay = () => {
       console.log(searchText)
     }
 
+    const currentUser = auth.currentUser
+    console.log(currentUser)
+
+    const uploadCoins = () => {
+      
+      db.collection('portfolio').doc(currentUser.uid).set({coins: coinSelection})
+    }
+
     return (
       <Container >
 
@@ -74,7 +83,7 @@ const CardDisplay = () => {
           </Grid>
           <Grid item xs={12}>
           <Link to="/portfolio" style={{textDecoration: 'none'}}>
-            <Button endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" color="primary"><Typography variant="button" >Go to portfolio</Typography></Button>
+            <Button onClick={uploadCoins} endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" color="primary"><Typography variant="button" >Go to portfolio</Typography></Button>
             </Link>
             </Grid>
           

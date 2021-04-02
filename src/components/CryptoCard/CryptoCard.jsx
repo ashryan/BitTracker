@@ -5,6 +5,8 @@ import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOut
 import cryptoPortData from "../../data/coin-selection.json"
 import { Typography, makeStyles, Card } from "@material-ui/core"
 import { sizing } from '@material-ui/system';
+import { auth, db} from '../../firebase'
+ 
 
 const useStyles = makeStyles({
     icon: {
@@ -19,22 +21,30 @@ const useStyles = makeStyles({
     }
     }
   })
-  
 
+ 
+ 
+ 
 const CryptoCard =  (props) => {
 
     const classes = useStyles()
 
     const {coin, addCrypto} = props;
 
-   
+      const currentUser = auth.currentUser.uid;
+     
+        // const addCoinToDB = () => {
+        //   db.collection('portfolio').doc(currentUser).set(coin.id)
+        // }
+ 
         const addFav = (e) => {
             coin.isFav = true;
             cryptoPortData.push(coin.id)
             alert(`${coin.name} added to portfolio`)
+            // addCoinToDB()
         }
         
-
+       
        return (
             <Card height={20} raised > 
                    
