@@ -17,8 +17,14 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import { BrowserRouter as Router, useHistory} from 'react-router-dom'
+import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 
 const drawerWidth = 240;
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,6 +87,7 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -89,6 +96,26 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+ 
+
+  const menuItems = [
+      {
+          text: "Dashboard",
+          icon: <DashboardIcon/>,
+          path: '/'
+      },
+      {
+          text: "Portfolio",
+          icon: <LibraryBooksIcon/>,
+          path: '/portfolio'
+      },
+      {
+          text: "Add Cryptos",
+          icon: <AddToPhotosIcon/>,
+          path: '/cryptos'
+      }
+  ]
 
   return (
     <div className={classes.root}>
@@ -130,10 +157,10 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Dashboard', 'Portfolio', 'Add Cryptos'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {menuItems.map((item) => (
+            <ListItem onClick={() => history.push(item.path)} button key={item.text}>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
             </ListItem>
           ))}
         </List>
