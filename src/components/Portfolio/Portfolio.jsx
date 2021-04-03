@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PortCryptoList from './PortCryptoList'
 import data from "../../data/coin-selection.json"
 import { db, auth } from "../../firebase"
+import Drawer from "../Drawer"
 
 const Portfolio = () => {
 
@@ -41,7 +42,9 @@ const Portfolio = () => {
        
        
     return (
+    
         <div>
+            <Drawer />
             { coins && <PortCryptoList coins = {coins}/> }
         </div>
     )
