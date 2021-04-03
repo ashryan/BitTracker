@@ -72,7 +72,6 @@ const CryptoCard =  (props) => {
                      Market Cap Rank: {coin.market_cap_rank}
                     </Typography>
                     <img className={styles.cardImg} src={coin.image} alt="Coin"></img>
-                    <AddCircleOutlineOutlinedIcon className={classes.icon} color="action" fontSize="med" onClick={addFav} />
                     <Success coinName={coin.name} addFav={addFav} />
                
                
