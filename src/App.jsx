@@ -6,8 +6,8 @@ import Login from "./components/Login"
 import SignUp from "./components/SignUp"
 import React, { useState, useEffect} from "react"
 import { AuthProvider } from "./context/AuthContext/AuthContext"
-
 import CardDisplay from './components/CardDisplay';
+import Dashboard from './components/Dashboard';
 
 function App() {
 
@@ -37,6 +37,9 @@ function App() {
         </Route>
         <Route path = "/crypto">
           <CardDisplay/>
+        </Route>
+        <Route path = "/dashboard">
+            <Dashboard />
         </Route>
 
       </Switch>
