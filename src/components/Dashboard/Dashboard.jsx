@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from "@material-ui/core/Container"
 import Drawer from "../Drawer"
 import { auth, db } from "../../firebase"
-import { Grid, Card } from '@material-ui/core'
+import { Grid, Card, Button } from '@material-ui/core'
 import AddCircleOutlineOutlinedIcon from "@material-ui/core/"
 import Top10PriceChangeTable from "../Top10PriceChangeTable"
 
@@ -31,14 +31,20 @@ const Dashboard = () => {
 
     return (
         
-        <Container >
+        <Container spacing={1} >
             <Drawer />
             <h1>Welcome, {auth.currentUser.email}</h1>
             {coins &&
-            <Grid container>
-                <Grid item>
-                    <Card><h3>Check your portfolio?</h3> 
-                        <p>{returnedData} coins in your portfolio</p>
+            <Grid container spacing={4}>
+                <Grid item xs={6}>
+                    <Card style={{minHeight:"150px", marginBottom:"50px"}} raised ><h3>Check your portfolio?</h3> 
+                        <Button variant="outlined" color="primary">Go To Portfolio</Button>
+                    </Card>
+                </Grid>
+                <Grid item xs={6}>
+                    <Card style={{minHeight:"150px", marginBottom:"50px"}} raised><h3>Add coins to your portfolio?</h3>
+                        <Button variant="outlined" color="primary">Add New Coins</Button>
+                        
                     </Card>
                 </Grid>
             </Grid>

@@ -33,10 +33,10 @@ console.log(pos2)
 
   const rows = [
     createData(pos1.name, `${pos1.price_change_percentage_24h}%`, `£${pos1.current_price}`, `£${pos1.ath}`,pos1.market_cap_rank),
-    createData(pos2.name, `${pos2.price_change_percentage_24h}%`, `£${pos2.current_price}`,`£${pos1.ath}`,pos2.market_cap_rank),
-    createData(pos3.name, `${pos3.price_change_percentage_24h}%`, `£${pos3.current_price}`,`£${pos1.ath}`, pos3.market_cap_rank),
-    createData(pos4.name, `${pos4.price_change_percentage_24h}%`, `£${pos4.current_price}`,`£${pos1.ath}`, pos4.market_cap_rank),
-    createData(pos5.name, `${pos5.price_change_percentage_24h}%`, `£${pos5.current_price}`,`£${pos1.ath}`, pos5.market_cap_rank),
+    createData(pos2.name, `${pos2.price_change_percentage_24h}%`, `£${pos2.current_price}`,`£${pos2.ath}`,pos2.market_cap_rank),
+    createData(pos3.name, `${pos3.price_change_percentage_24h}%`, `£${pos3.current_price}`,`£${pos3.ath}`, pos3.market_cap_rank),
+    createData(pos4.name, `${pos4.price_change_percentage_24h}%`, `£${pos4.current_price}`,`£${pos4.ath}`, pos4.market_cap_rank),
+    createData(pos5.name, `${pos5.price_change_percentage_24h}%`, `£${pos5.current_price}`,`£${pos5.ath}`, pos5.market_cap_rank),
   ];
 
   return (
