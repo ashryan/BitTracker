@@ -111,7 +111,7 @@ export default function PersistentDrawerLeft() {
       {
           text: "Dashboard",
           icon: <DashboardIcon/>,
-          path: '/'
+          path: '/dashboard'
       },
       {
           text: "Portfolio",
@@ -159,6 +159,7 @@ export default function PersistentDrawerLeft() {
         }}
       >
         <div className={classes.drawerHeader}>
+            <Typography variant="h6">{auth.currentUser.email}</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
