@@ -10,6 +10,7 @@ import styles from "./CardDisplay.module.scss"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { db, auth } from "../../firebase"
 import Drawer from "../Drawer"
+import Loading from "../Loading"
 
 
 const CardDisplay = () => {
@@ -102,6 +103,8 @@ const CardDisplay = () => {
             <Button onClick={uploadCoins} endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" color="primary"><Typography variant="button" >Go to portfolio</Typography></Button>
             </Link>
             </Grid>
+
+            {!coins && <Loading />}
           
            
             {coins && searchText.length > 0 && coins.filter(coin => coin.id === searchText).map(filteredCoins => 

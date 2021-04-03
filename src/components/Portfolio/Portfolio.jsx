@@ -3,6 +3,7 @@ import PortCryptoList from './PortCryptoList'
 import data from "../../data/coin-selection.json"
 import { db, auth } from "../../firebase"
 import Drawer from "../Drawer"
+import Loading from "../Loading"
 
 const Portfolio = () => {
 
@@ -44,7 +45,8 @@ const Portfolio = () => {
     return (
     
         <div>
-            <Drawer />
+          <Drawer />
+          {!coins && <Loading/>}
             { coins && <PortCryptoList coins = {coins}/> }
         </div>
     )

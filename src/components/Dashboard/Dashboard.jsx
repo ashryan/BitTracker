@@ -19,7 +19,7 @@ const Dashboard = () => {
             setCoins(true)
             
         })
-        return returnedData
+       
     },[])
 
 
