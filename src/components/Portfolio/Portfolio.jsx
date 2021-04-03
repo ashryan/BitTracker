@@ -20,9 +20,9 @@ const Portfolio = () => {
       var coinsToGet =[];
 
       const getCoinsFromFirestore = db.collection('portfolio').doc(auth.currentUser.uid).get().then((res)=>{
-        let req = res.data()
-        console.log(req)
-        coinsToGet = req.coins.join(", ")
+        let returnedData = res.data()
+        
+        coinsToGet = returnedData.coins.join(", ")
         console.log(coinsToGet)
       
      }).then(()=>{

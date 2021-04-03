@@ -6,6 +6,7 @@ import cryptoSelection from "../../data/coin-selection.json"
 import { Typography, makeStyles, Card } from "@material-ui/core"
 import { sizing } from '@material-ui/system';
 import { auth, db} from '../../firebase'
+
  
 
 const useStyles = makeStyles({
@@ -50,6 +51,7 @@ const CryptoCard =  (props) => {
        return (
             <Card height={20} raised > 
                    
+                                 
                     <Typography color="textPrimary" variant="h3">
                         {coin.name}
                      </Typography>

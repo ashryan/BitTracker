@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import styles from "./CardDisplay.module.scss"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { db, auth } from "../../firebase"
+import Drawer from "../Drawer"
 
 
 const CardDisplay = () => {
@@ -86,8 +87,9 @@ const CardDisplay = () => {
     }
 
     return (
+   
       <Container >
-
+           <Drawer />
     
           
        

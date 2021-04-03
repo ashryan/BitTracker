@@ -2,7 +2,9 @@ import { StylesProvider } from '@material-ui/styles'
 import React, { useState, useRef } from 'react'
 import styles from "./PortCryptoCard.module.scss"
 import { Card, Grid, Container, Typography, TextField } from "@material-ui/core"
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Paper from '@material-ui/core/Paper';
+import { db, auth } from '../../../../firebase';
 import {
   ArgumentAxis,
   ValueAxis,
@@ -42,6 +44,10 @@ const PortCryptoCard = (props) => {
 
     }
 
+    const removeCoin = () => {
+        db.collection('portfolio').doc(auth.currentUser.uid).where('coins.')
+    }
+
     const placeholderText = `Input amount of ${props.coin.name}`
 
     return (
@@ -49,6 +55,7 @@ const PortCryptoCard = (props) => {
         <Grid container spacing={4}>
             <Grid item xs={12}>
             <Card variant="filled" raised>
+                <HighlightOffIcon />  
                 <Typography gutterBottom variant="h4">{props.coin.name}</Typography>
                 <Typography color="primary" gutterBottom>Current Price: £{props.coin.current_price}</Typography>
                 {/* <p>1hr Change: {props.coin.price_change_percentage_1h_in_currency}%</p> */}
