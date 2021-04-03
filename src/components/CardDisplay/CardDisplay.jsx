@@ -3,7 +3,8 @@ import SearchBar from '../SearchBar'
 import React, { useState, useEffect} from "react"
 import CryptoCard from '../CryptoCard'
 import Button from '@material-ui/core/Button'
-import { Card, Container, Typography,  TextField, Grid } from '@material-ui/core'
+import { Card, Container, Typography,  TextField, Grid, Snackbar } from '@material-ui/core'
+import  Alert  from "@material-ui/lab/Alert"
 import coinSelection from "../../data/coin-selection.json"
 import { Link } from 'react-router-dom';
 import styles from "./CardDisplay.module.scss"
@@ -33,12 +34,12 @@ const CardDisplay = () => {
     useEffect(() => {
 
       db.collection('portfolio').doc(auth.currentUser.uid).get().then((res)=>{
-
-        const formatData = res.data().coins.join(', ')
-         
-        coinSelection.push(formatData)
-        console.log(coinSelection)
-   
+        if(res.data()){
+          const formatData = res.data().coins.join(', ')
+          
+          coinSelection.push(formatData)
+          console.log(coinSelection)
+        }
       })
 
       fetch(baseUrl).then(res => {
@@ -91,9 +92,7 @@ const CardDisplay = () => {
    
       <Container >
            <Drawer />
-    
-          
-       
+
         <Grid container spacing={4}>
           <Grid item xs={12}>
           <TextField  label="Search for a Crypto" onChange={getSearchText}/>

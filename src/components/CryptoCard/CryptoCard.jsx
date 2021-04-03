@@ -6,6 +6,7 @@ import cryptoSelection from "../../data/coin-selection.json"
 import { Typography, makeStyles, Card } from "@material-ui/core"
 import { sizing } from '@material-ui/system';
 import { auth, db} from '../../firebase'
+import Success from "../Success"
 
  
 
@@ -44,13 +45,14 @@ const CryptoCard =  (props) => {
           cryptoSelection.push(coin.id)
 
           console.log(cryptoSelection)
-          alert(`${coin.name} added to portfolio`)
-          // addCoinToDB()
+
+         alert(`${coin.name} added to portfolio`)
+          
       }
        
        return (
             <Card height={20} raised > 
-                   
+                  
                                  
                     <Typography color="textPrimary" variant="h3">
                         {coin.name}
@@ -70,8 +72,8 @@ const CryptoCard =  (props) => {
                      Market Cap Rank: {coin.market_cap_rank}
                     </Typography>
                     <img className={styles.cardImg} src={coin.image} alt="Coin"></img>
-                    <AddCircleOutlineOutlinedIcon className={classes.icon} color="action" fontSize="med" onClick={addFav}/>
-                   
+                    <AddCircleOutlineOutlinedIcon className={classes.icon} color="action" fontSize="med" onClick={addFav} />
+                    <Success coinName={coin.name} addFav={addFav} />
                
                
                 </Card>

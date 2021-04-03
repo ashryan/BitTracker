@@ -121,7 +121,7 @@ export default function PersistentDrawerLeft() {
       {
           text: "Add Cryptos",
           icon: <AddToPhotosIcon/>,
-          path: '/cryptos'
+          path: '/crypto'
       }
   ]
 
