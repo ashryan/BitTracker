@@ -21,6 +21,8 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import { BrowserRouter as Router, useHistory} from 'react-router-dom'
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { auth } from "../../firebase";
 
 const drawerWidth = 240;
 
@@ -97,6 +99,12 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const handleSignOut = () => {
+      auth.signOut()
+      history.push('/login')
+
+  }
+
  
 
   const menuItems = [
@@ -167,8 +175,8 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           {['Sign Out'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItem button key={text} onClick={handleSignOut}>
+              <ListItemIcon><ExitToAppIcon/></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
