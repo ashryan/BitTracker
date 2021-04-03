@@ -14,9 +14,20 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     '& > * + *': {
       marginTop: theme.spacing(2),
-    },
-  },
-}));
+    }},
+
+    icon: {
+        margin: "5px 0px",
+        '&:hover':{
+          color: "pink",
+          cursor: "pointer"
+          
+        },
+      
+      iconClicked :{
+          color: "white"
+  }
+}}));
 
 export default function CustomizedSnackbars(props) {
   const classes = useStyles();
@@ -37,8 +48,9 @@ export default function CustomizedSnackbars(props) {
 
   return (
     <div className={classes.root}>
-      <AddCircleOutlineOutlinedIcon variant="outlined" onClick={handleClick} />
        
+      <AddCircleOutlineOutlinedIcon className={classes.icon} color="secondary" variant="outlined" onClick={handleClick} />
+     
       
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">

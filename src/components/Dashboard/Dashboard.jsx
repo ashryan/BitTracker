@@ -13,13 +13,17 @@ const Dashboard = () => {
     var returnedData = ''
 
     useEffect(()=> {
-        db.collection('portfolio').doc(auth.currentUser.uid).get().then((res)=>{
-             returnedData = res.data().coins;
-             console.log(returnedData)
-             returnedData = returnedData.join(", ")
-            setCoins(true)
+         fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&category=decentralized_finance&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h").then((res) => {
+            return res.json()
             
-        })
+         }).then((data) =>{
+             console.log(data)
+            const sortedData = data.sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h)
+             console.log(sortedData)
+             setCoins(sortedData)
+         })
+            
+         
        
     },[])
 

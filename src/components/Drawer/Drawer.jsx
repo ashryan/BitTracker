@@ -159,7 +159,7 @@ export default function PersistentDrawerLeft() {
         }}
       >
         <div className={classes.drawerHeader}>
-            <Typography variant="h6">{auth.currentUser.email}</Typography>
+            <Typography variant="body1">{auth.currentUser.email}</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>

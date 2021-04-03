@@ -10,34 +10,20 @@ import Success from "../Success"
 
  
 
-const useStyles = makeStyles({
-    icon: {
-      '&:hover':{
-        color: "pink",
-        cursor: "pointer"
-        
-      },
-    
-    iconClicked :{
-        color: "white"
-    }
-    }
-  })
+
 
  
  
  
 const CryptoCard =  (props) => {
 
-    const classes = useStyles()
+  
 
     const {coin, addCrypto, stagedCoins} = props;
 
       const currentUser = auth.currentUser.uid;
      
-        // const addCoinToDB = () => {
-        //   db.collection('portfolio').doc(currentUser).set(coin.id)
-        // }
+        
  
        
         const addFav = (e) => {
@@ -45,8 +31,6 @@ const CryptoCard =  (props) => {
           cryptoSelection.push(coin.id)
 
           console.log(cryptoSelection)
-
-         alert(`${coin.name} added to portfolio`)
           
       }
        
@@ -60,7 +44,7 @@ const CryptoCard =  (props) => {
                     
                
                     <Typography gutterBottom="true" color="secondary">
-                     Symbol: {coin.symbol}
+                     Symbol: {coin.symbol.toUpperCase()}
                     </Typography>
                     <Typography gutterBottom="true" color="secondary">
                     Current Price: £{coin.current_price}

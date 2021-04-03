@@ -110,7 +110,7 @@ const CardDisplay = () => {
             
             
             (
-               <span className={styles.cryptoCard}><CryptoCard coin={filteredCoins} getSearchText={getSearchText} addCrypto={addCryptoToPort} /></span> 
+               <span className={styles.cryptoCard}><CryptoCard coin={filteredCoins} stagedCoins={stagedCoins} getSearchText={getSearchText} /></span> 
             )
             )}
          
