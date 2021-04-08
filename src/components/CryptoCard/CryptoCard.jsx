@@ -35,7 +35,7 @@ const CryptoCard =  (props) => {
       }
        
        return (
-            <Card height={20} raised > 
+            <Card style={{minHeight:"360px"}} raised > 
                   
                                  
                     <Typography color="textPrimary" variant="h3">
@@ -43,16 +43,16 @@ const CryptoCard =  (props) => {
                      </Typography>
                     
                
-                    <Typography gutterBottom="true" color="secondary">
+                    <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                      Symbol: {coin.symbol.toUpperCase()}
                     </Typography>
-                    <Typography gutterBottom="true" color="secondary">
+                    <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                     Current Price: £{coin.current_price}
                     </Typography>
-                    <Typography gutterBottom="true" color="secondary">
+                    <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                     All Time High: {coin.ath}
                     </Typography>
-                    <Typography gutterBottom="true" color="secondary">
+                    <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                      Market Cap Rank: {coin.market_cap_rank}
                     </Typography>
                     <img className={styles.cardImg} src={coin.image} alt="Coin"></img>
