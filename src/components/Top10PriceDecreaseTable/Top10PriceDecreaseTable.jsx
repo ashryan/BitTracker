@@ -24,11 +24,11 @@ function createData(name, up24h, price, ath, marketCap) {
 export default function BasicTable(props) {
   const classes = useStyles();
 
-  const pos1 = props.coins[0]
-  const pos2 = props.coins[1]
-  const pos3 = props.coins[2]
-  const pos4 = props.coins[3]
-  const pos5 = props.coins[4]
+  const pos1 = props.coins[245]
+  const pos2 = props.coins[246]
+  const pos3 = props.coins[247]
+  const pos4 = props.coins[248]
+  const pos5 = props.coins[249]
 console.log(pos2)
 
   const rows = [
@@ -44,8 +44,8 @@ console.log(pos2)
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Top 5 Biggest Increases (24hr)</TableCell>
-            <TableCell align="right">Price Increase (24hr)</TableCell>
+            <TableCell>Top 5 Decreases (24hr)</TableCell>
+            <TableCell align="right">Price Decreases (24hr)</TableCell>
             <TableCell align="right">Current Price</TableCell>
             <TableCell align="right">ATH</TableCell>
             <TableCell align="right">Market Cap Pos</TableCell>

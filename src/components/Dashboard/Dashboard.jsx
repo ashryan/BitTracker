@@ -5,6 +5,7 @@ import { auth, db } from "../../firebase"
 import { Grid, Card, Button } from '@material-ui/core'
 import AddCircleOutlineOutlinedIcon from "@material-ui/core/"
 import Top10PriceChangeTable from "../Top10PriceChangeTable"
+import Top5PriceDecreaseTable from "../Top10PriceDecreaseTable"
 
 
 const Dashboard = () => {
@@ -47,13 +48,21 @@ const Dashboard = () => {
                         
                     </Card>
                 </Grid>
+
+                <Grid item xs={12}>
+                    {coins && <Top10PriceChangeTable coins={coins}/> }
+                </Grid>
+
+                <Grid item xs={12}>
+                {coins && <Top5PriceDecreaseTable coins={coins}/>}
+                </Grid>
             </Grid>
 
                     
             }
 
             
-            {coins && <Top10PriceChangeTable coins={coins}/> }
+           
 
 
 
