@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Card, Container, Typography,  TextField, Grid, FormControl, InputLabel, Input, FormHelperText, Button } from '@material-ui/core'
 import { useAuth, AuthProvider } from '../../context/AuthContext/AuthContext'
 import Alert from "@material-ui/lab/Alert"
+import { db, auth } from "../../firebase"
 
 const SignUp = () => {
 
@@ -14,6 +15,8 @@ const SignUp = () => {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
+
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -35,6 +38,7 @@ const SignUp = () => {
 
         setLoading(false)
 
+       
         
     }
 
@@ -62,7 +66,7 @@ const SignUp = () => {
                         <TextField id="passwordConf" type="password" required label="Confirm Password" helperText="Must match" inputRef={passConfRef} />
                     </Grid>
                     <Grid  item xs={12}>
-                        <Button type="submit" mt={3} disabled={loading} variant="contained" color="primary" >Submit</Button>
+                        <Button  type="submit" mt={3} disabled={loading} variant="contained" color="primary" >Submit</Button>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography gutterBottom mb={2} variant="body1">Already have an account? <Link to="/login"> Click here </Link></Typography>

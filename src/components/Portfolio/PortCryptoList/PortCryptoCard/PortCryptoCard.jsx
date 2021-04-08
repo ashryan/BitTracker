@@ -14,6 +14,10 @@ import {
 
 const PortCryptoCard = (props) => {
 
+    const {coin} = props
+
+    
+
     let trendLineData = []
     
     const yo = [props.coin.sparkline_in_7d.price]
@@ -48,6 +52,12 @@ const PortCryptoCard = (props) => {
         db.collection('portfolio').doc(auth.currentUser.uid).where('coins.')
     }
 
+    const saveCoinAndWorth = () => {
+
+        const coins = [{name:props.coin.name, amount:parseInt(inputAmount.current.value)}]
+        db.collection('value').doc(auth.currentUser.uid).set({[coin.id]:coins}, {merge:true})
+    }
+
     const placeholderText = `Input amount of ${props.coin.name}`
 
     return (
@@ -60,7 +70,7 @@ const PortCryptoCard = (props) => {
                 <Typography color="primary" gutterBottom>Current Price: £{props.coin.current_price}</Typography>
                 {/* <p>1hr Change: {props.coin.price_change_percentage_1h_in_currency}%</p> */}
                 <Typography  color="primary" gutterBottom>24hr Change: {props.coin.price_change_percentage_24h}%</Typography>
-                <TextField onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField>
+                <TextField onBlur={saveCoinAndWorth} onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField>
                 <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth £{amount * props.coin.current_price}</Typography>
 
             
