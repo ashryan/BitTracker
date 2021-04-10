@@ -6,6 +6,7 @@ import { Grid, Card, Button } from '@material-ui/core'
 import AddCircleOutlineOutlinedIcon from "@material-ui/core/"
 import Top10PriceChangeTable from "../Top10PriceChangeTable"
 import Top5PriceDecreaseTable from "../Top10PriceDecreaseTable"
+import { Link } from "react-router-dom"
 
 
 const Dashboard = () => {
@@ -39,12 +40,16 @@ const Dashboard = () => {
             <Grid container spacing={4}>
                 <Grid item xs={6}>
                     <Card style={{minHeight:"150px", marginBottom:"50px"}} raised ><h3>Check your portfolio?</h3> 
-                        <Button variant="outlined" color="primary">Go To Portfolio</Button>
+                        <Link style={{textDecoration:"none"}} to="/portfolio"> 
+                            <Button variant="outlined" color="primary">Go To Portfolio</Button>
+                        </Link>
                     </Card>
                 </Grid>
                 <Grid item xs={6}>
                     <Card style={{minHeight:"150px", marginBottom:"50px"}} raised><h3>Add coins to your portfolio?</h3>
-                        <Button variant="outlined" color="primary">Add New Coins</Button>
+                        <Link style={{textDecoration:"none"}} to="/crypto">
+                            <Button variant="outlined" color="primary">Add New Coins</Button>
+                        </Link>
                         
                     </Card>
                 </Grid>
