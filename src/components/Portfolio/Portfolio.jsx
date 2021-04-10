@@ -6,8 +6,8 @@ import Drawer from "../Drawer"
 import Loading from "../Loading"
 import { render } from '@testing-library/react'
 import { Typography } from "@material-ui/core"
-import { renderIntoDocument } from 'react-dom/test-utils'
-import PortfolioIsEmpty from "../PortfolioIsEmpty"
+
+
 
 const Portfolio = () => {
 
