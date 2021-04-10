@@ -4,6 +4,10 @@ import data from "../../data/coin-selection.json"
 import { db, auth } from "../../firebase"
 import Drawer from "../Drawer"
 import Loading from "../Loading"
+import { render } from '@testing-library/react'
+import { Typography } from "@material-ui/core"
+import { renderIntoDocument } from 'react-dom/test-utils'
+import PortfolioIsEmpty from "../PortfolioIsEmpty"
 
 const Portfolio = () => {
 
@@ -23,24 +27,33 @@ const Portfolio = () => {
 
       const getCoinsFromFirestore = db.collection('portfolio').doc(auth.currentUser.uid).get().then((res)=>{
         let returnedData = res.data()
+
+        if(returnedData == undefined){
+           return 
+           
+         
+        }else {
         
-        coinsToGet = returnedData.coins.join(", ")
-        console.log(coinsToGet)
-      
-     }).then(()=>{
+          coinsToGet = returnedData.coins.join(", ")
+          console.log(coinsToGet)
+        }
+        
+            
+        }).then(()=>{
+            
+          fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&ids=${coinsToGet}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C%2024h`).then(res => {
+          return res.json()
+          }).then(data => {
+              setCoins(data)
+              return coins
+              })
+            }
 
-      fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=gbp&ids=${coinsToGet}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C%2024h`).then(res => {
-        return res.json()
-       }).then(data => {
-         setCoins(data)
-         return coins
-       })
-
-    })
+          )
 
 
-     }, [])
-       
+          }, [])
+            
        
     return (
     
