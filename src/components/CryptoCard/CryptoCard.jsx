@@ -25,7 +25,7 @@ const CryptoCard =  (props) => {
       const currentUser = auth.currentUser.uid;
      
         
-        const num = 3000
+       
        
         const addFav = (e) => {
           coin.isFav = true;

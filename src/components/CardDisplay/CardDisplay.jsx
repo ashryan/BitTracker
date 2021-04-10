@@ -3,7 +3,8 @@ import SearchBar from '../SearchBar'
 import React, { useState, useEffect} from "react"
 import CryptoCard from '../CryptoCard'
 import Button from '@material-ui/core/Button'
-import { Card, Container, Typography,  TextField, Grid, Snackbar } from '@material-ui/core'
+import { Card, Container, Typography,  TextField, Snackbar } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import  Alert  from "@material-ui/lab/Alert"
 import coinSelection from "../../data/coin-selection.json"
 import { Link } from 'react-router-dom';
@@ -95,10 +96,10 @@ const CardDisplay = () => {
 
         <Grid container spacing={4}>
           <Grid item xs={12}>
-          <TextField  label="Search for a Crypto" onChange={getSearchText}/>
+            <TextField  label="Search for a Crypto" onChange={getSearchText}/>
           </Grid>
           <Grid item xs={12}>
-          <Link to="/portfolio" style={{textDecoration: 'none'}}>
+            <Link to="/portfolio" style={{textDecoration: 'none'}}>
             <Button onClick={uploadCoins} endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" color="primary"><Typography variant="button" >Go to portfolio</Typography></Button>
             </Link>
             </Grid>
@@ -119,8 +120,8 @@ const CardDisplay = () => {
            
             {coins && searchText.length === 0 && coins.map((coin) => {
                 return ( 
-                  <Grid item xl={3} md={4} xs={6} >
-                  <CryptoCard stagedCoins={stagedCoins} coin={coin}   />
+                  <Grid item  lg={3} md={4} xs={6} >
+                      <CryptoCard stagedCoins={stagedCoins} coin={coin}   />
                   </Grid>
                 
                 )
