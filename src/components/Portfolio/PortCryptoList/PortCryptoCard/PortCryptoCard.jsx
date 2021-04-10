@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react'
 import styles from "./PortCryptoCard.module.scss"
 import { Card, Grid, Container, Typography, TextField } from "@material-ui/core"
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import Paper from '@material-ui/core/Paper';
+import NumberFormat from "react-number-format"
 import { db, auth } from '../../../../firebase';
 import {
   ArgumentAxis,
@@ -67,11 +67,15 @@ const PortCryptoCard = (props) => {
             <Card variant="filled" raised>
                 <HighlightOffIcon />  
                 <Typography gutterBottom variant="h4">{props.coin.name}</Typography>
-                <Typography color="primary" gutterBottom>Current Price: £{props.coin.current_price}</Typography>
+                <Typography color="primary" gutterBottom>
+                    <NumberFormat thousandSeparator prefix={"Current Price: £"} displayType="text" decimalScale={2} value={props.coin.current_price} />
+                </Typography>
                 {/* <p>1hr Change: {props.coin.price_change_percentage_1h_in_currency}%</p> */}
                 <Typography  color="primary" gutterBottom>24hr Change: {props.coin.price_change_percentage_24h}%</Typography>
                 <TextField onBlur={saveCoinAndWorth} onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField>
-                <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth £{amount * props.coin.current_price}</Typography>
+                <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth 
+                    <NumberFormat thousandSeparator defaultValue={0} displayType="text" prefix={" £"} decimalScale={0} value={amount * props.coin.current_price} />
+                </Typography>
 
             
 
