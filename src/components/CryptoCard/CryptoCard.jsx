@@ -52,7 +52,7 @@ const CryptoCard =  (props) => {
                       <NumberFormat prefix={'Current Price: £'} thousandSeparator displayType="text" value={coin.current_price} /> 
                     </Typography>
                     <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
-                    All Time High: {coin.ath}
+                      <NumberFormat thousandSeparator prefix={"All Time High: £"} displayType="text" value={coin.ath} /> 
                     </Typography>
                     <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                      Market Cap Rank: {coin.market_cap_rank}
