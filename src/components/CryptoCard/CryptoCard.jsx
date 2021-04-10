@@ -7,6 +7,7 @@ import { Typography, makeStyles, Card } from "@material-ui/core"
 import { sizing } from '@material-ui/system';
 import { auth, db} from '../../firebase'
 import Success from "../Success"
+import NumberFormat from "react-number-format"
 
  
 
@@ -24,7 +25,7 @@ const CryptoCard =  (props) => {
       const currentUser = auth.currentUser.uid;
      
         
- 
+        const num = 3000
        
         const addFav = (e) => {
           coin.isFav = true;
@@ -46,8 +47,9 @@ const CryptoCard =  (props) => {
                     <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                      Symbol: {coin.symbol.toUpperCase()}
                     </Typography>
+                   
                     <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
-                    Current Price: £{coin.current_price}
+                      <NumberFormat prefix={'Current Price: £'} thousandSeparator displayType="text" value={coin.current_price} /> 
                     </Typography>
                     <Typography style={{padding:"5px"}} gutterBottom="true" color="secondary">
                     All Time High: {coin.ath}

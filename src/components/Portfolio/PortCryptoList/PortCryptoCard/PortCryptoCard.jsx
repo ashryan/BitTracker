@@ -54,7 +54,7 @@ const PortCryptoCard = (props) => {
 
     const saveCoinAndWorth = () => {
 
-        const coins = [{name:props.coin.name, amount:parseInt(inputAmount.current.value)}]
+        const coins = {name:props.coin.name, amount:parseInt(inputAmount.current.value)}
         db.collection('value').doc(auth.currentUser.uid).set({[coin.id]:coins}, {merge:true})
     }
 

@@ -8,6 +8,7 @@ import React, { useState, useEffect} from "react"
 import { AuthProvider } from "./context/AuthContext/AuthContext"
 import CardDisplay from './components/CardDisplay';
 import Dashboard from './components/Dashboard';
+import Wallet from './components/Wallet';
 
 function App() {
 
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path = "/dashboard">
             <Dashboard />
+        </Route>
+        <Route path="/wallet">
+          <Wallet />
         </Route>
 
       </Switch>
