@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -35,7 +35,6 @@ export default function CustomizedSnackbars(props) {
 
   const handleClick = () => {
     setOpen(true);
-    props.addFav()
   };
 
   const handleClose = (event, reason) => {
@@ -49,12 +48,12 @@ export default function CustomizedSnackbars(props) {
   return (
     <div className={classes.root}>
        
-      <AddCircleOutlineOutlinedIcon className={classes.icon} color="secondary" variant="outlined" onClick={handleClick} />
+      <HighlightOffIcon className={classes.icon} color="secondary" variant="outlined" onClick={handleClick} />
      
       
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="warning">
-          Please add a coin to your portfolio before visting this page
+          Removing coins from your portfolio is an upcoming feature and will be added soon.
         </Alert>
       </Snackbar>
      
