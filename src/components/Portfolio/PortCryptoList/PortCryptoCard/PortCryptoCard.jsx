@@ -22,8 +22,7 @@ const PortCryptoCard = (props) => {
     
     const yo = [props.coin.sparkline_in_7d.price]
 
-    console.log(yo)
-
+   
    
     // sparkLineData.push(props.coin.sparkline_in_7d.price)
     // console.log(sparkLineData)
