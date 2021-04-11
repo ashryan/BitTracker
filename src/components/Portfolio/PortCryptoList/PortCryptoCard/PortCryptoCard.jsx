@@ -6,12 +6,7 @@ import NumberFormat from "react-number-format"
 import { db, auth } from '../../../../firebase';
 import Removed from "../../../Removed"
 import PriceUpdated from "../../../PriceUpdated"
-import {
-  ArgumentAxis,
-  ValueAxis,
-  Chart,
-  LineSeries,
-} from '@devexpress/dx-react-chart-material-ui';
+import ChartModal from "./ChartModal"
 import { render } from 'react-dom'
 
 const PortCryptoCard = (props) => {
@@ -20,14 +15,13 @@ const PortCryptoCard = (props) => {
 
     
 
-    let trendLineData = []
+   
     
-    const yo = [props.coin.sparkline_in_7d.price]
+    const priceSparkLine = [props.coin.sparkline_in_7d.price]
 
    
    
-    // sparkLineData.push(props.coin.sparkline_in_7d.price)
-    // console.log(sparkLineData)
+    
 
     const [amount, setAmount] = useState(0)
    
@@ -78,6 +72,7 @@ const PortCryptoCard = (props) => {
                 <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth 
                     <NumberFormat thousandSeparator defaultValue={0} displayType="text" prefix={" £"} decimalScale={0} value={amount * props.coin.current_price} />
                 </Typography>
+                <ChartModal coinName={coin.name} priceSparkLine={priceSparkLine} />
 
             
 
