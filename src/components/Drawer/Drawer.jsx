@@ -23,6 +23,7 @@ import { BrowserRouter as Router, useHistory} from 'react-router-dom'
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { auth } from "../../firebase";
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 
 const drawerWidth = 240;
 
@@ -122,6 +123,11 @@ export default function PersistentDrawerLeft() {
           text: "Add Cryptos",
           icon: <AddToPhotosIcon/>,
           path: '/crypto'
+      },
+      {
+        text: "Wallet",
+        icon: <AccountBalanceWalletIcon/>,
+        path: '/wallet'
       }
   ]
 
