@@ -35,7 +35,7 @@ const Portfolio = () => {
         }else {
         
           coinsToGet = returnedData.coins.join(", ")
-          console.log(coinsToGet)
+        
         }
         
             

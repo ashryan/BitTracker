@@ -33,8 +33,7 @@ const PortCryptoCard = (props) => {
     const displayAmount = () => {
         const intValue = (parseInt(inputAmount.current.value))
         setAmount(intValue)
-        console.log(inputAmount)
-        console.log(inputAmount.current.value)
+       
     }
 
     
