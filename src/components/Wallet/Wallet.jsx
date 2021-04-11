@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import WalletCard from './WalletCard'
 import {db, auth} from "../../firebase"
 import Drawer from "../Drawer" 
-import { Card, Container } from '@material-ui/core'
+import { Button, Card, Container } from '@material-ui/core'
 
 let response = ''
 
@@ -54,6 +54,7 @@ const Wallet = () => {
 
                 })}
         </Card>
+  
        </Container>
     )
 }

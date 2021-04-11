@@ -5,7 +5,9 @@ import { db, auth } from "../../firebase"
 import Drawer from "../Drawer"
 import Loading from "../Loading"
 import { render } from '@testing-library/react'
-import { Typography } from "@material-ui/core"
+import { Typography, Button } from "@material-ui/core"
+import { AccountBalanceWalletOutlined } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
 
 
@@ -59,8 +61,12 @@ const Portfolio = () => {
     
         <div>
           <Drawer />
+         <Link style={{textDecoration:"none"}} to="/wallet"> 
+            <Button style={{marginBottom:"25px"}} color="primary" variant="outlined">Go To Wallet {<AccountBalanceWalletOutlined style={{marginLeft:"5px"}} />}</Button>
+         </Link>
           {!coins && <Loading/>}
             { coins && <PortCryptoList coins = {coins}/> }
+           
         </div>
     )
 }
