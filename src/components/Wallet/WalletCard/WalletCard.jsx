@@ -29,7 +29,13 @@ const WalletCard = (props) => {
                 <Card>
 
                     <h1>{props.coin[1].name}</h1>
-                    <Typography color="secondary"><NumberFormat thousandSeparator prefix={"£"} displayType="text" value={price * props.coin[1].amount} />
+                    <Typography>
+                        You have {props.coin[1].amount} {props.coin[1].name}
+
+                    </Typography>
+                    <Typography color="secondary">
+                        Your {props.coin[1].name} is worth
+                        <NumberFormat thousandSeparator prefix={" £"} displayType="text" value={price * props.coin[1].amount} />
                     </Typography>
                 </Card>
             }
