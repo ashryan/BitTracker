@@ -5,12 +5,14 @@ import { Card, Grid, Container, Typography, TextField } from "@material-ui/core"
 import NumberFormat from "react-number-format"
 import { db, auth } from '../../../../firebase';
 import Removed from "../../../Removed"
+import PriceUpdated from "../../../PriceUpdated"
 import {
   ArgumentAxis,
   ValueAxis,
   Chart,
   LineSeries,
 } from '@devexpress/dx-react-chart-material-ui';
+import { render } from 'react-dom'
 
 const PortCryptoCard = (props) => {
 
@@ -54,6 +56,7 @@ const PortCryptoCard = (props) => {
 
         const coins = {name:props.coin.name, amount:parseInt(inputAmount.current.value)}
         db.collection('value').doc(auth.currentUser.uid).set({[coin.id]:coins}, {merge:true})
+        
     }
 
     const placeholderText = `Input amount of ${props.coin.name}`
@@ -70,7 +73,8 @@ const PortCryptoCard = (props) => {
                 </Typography>
                 {/* <p>1hr Change: {props.coin.price_change_percentage_1h_in_currency}%</p> */}
                 <Typography  color="primary" gutterBottom>24hr Change: {props.coin.price_change_percentage_24h}%</Typography>
-                <TextField onBlur={saveCoinAndWorth} onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField>
+                <PriceUpdated coin={coin} setAmount={setAmount} saveCoinAndWorth={saveCoinAndWorth} displayAmount={displayAmount} inputAmount={inputAmount}placeholderText={placeholderText} />
+                {/* <TextField onBlur={saveCoinAndWorth} onChange={displayAmount} type="number" inputRef={inputAmount}  placeholder={placeholderText}></TextField> */}
                 <Typography type="number" color="primary" gutterBottom >Your {props.coin.name} is worth 
                     <NumberFormat thousandSeparator defaultValue={0} displayType="text" prefix={" £"} decimalScale={0} value={amount * props.coin.current_price} />
                 </Typography>

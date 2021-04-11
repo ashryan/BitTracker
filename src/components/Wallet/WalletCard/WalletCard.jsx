@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Typography } from '@material-ui/core'
 import  NumberFormat  from 'react-number-format'
+import Drawer from "../../Drawer"
 
 const WalletCard = (props) => {
  
@@ -25,6 +26,9 @@ const WalletCard = (props) => {
 
     return (
         <>
+
+            <Drawer />
+        
             {price &&
                 <Card>
 
