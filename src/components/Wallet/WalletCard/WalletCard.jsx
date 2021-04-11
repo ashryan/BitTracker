@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Typography } from '@material-ui/core'
+import { Card, Typography, Grid } from '@material-ui/core'
 import  NumberFormat  from 'react-number-format'
-import Drawer from "../../Drawer"
 
 const WalletCard = (props) => {
  
@@ -27,21 +26,32 @@ const WalletCard = (props) => {
     return (
         <>
 
-            <Drawer />
+          
         
             {price &&
-                <Card>
+                <Card raised>
+                    <Grid container>
+                        <Grid item md={6}>
+                            <Typography style={{paddingTop:"20px"}} variant="h4">{props.coin[1].name}</Typography>
+                            
+                        </Grid>
+                       
+                        <Grid item md={6}>
+                        <Typography style={{paddingTop:"20px"}}>
+                            You have {props.coin[1].amount} {props.coin[1].name}
 
-                    <h1>{props.coin[1].name}</h1>
-                    <Typography>
-                        You have {props.coin[1].amount} {props.coin[1].name}
-
-                    </Typography>
-                    <Typography color="secondary">
-                        Your {props.coin[1].name} is worth
-                        <NumberFormat thousandSeparator prefix={" £"} displayType="text" value={price * props.coin[1].amount} />
-                    </Typography>
+                        </Typography>
+                       
+                        <Typography style={{marginBottom:"3%"}} color="secondary">
+                            Your {props.coin[1].name} is worth
+                            <NumberFormat thousandSeparator prefix={" £"} displayType="text" value={price * props.coin[1].amount} />
+                        </Typography>
+                        
+                        </Grid>
+                    </Grid>
+                   
                 </Card>
+               
             }
         </>
        

@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react"
 import WalletCard from './WalletCard'
 import {db, auth} from "../../firebase"
+import Drawer from "../Drawer" 
+import { Card, Container } from '@material-ui/core'
 
 let response = ''
 
@@ -43,12 +45,16 @@ const Wallet = () => {
     console.log(response)
 
     return (
-        <>
-            {loading && response.map((coin) => {
-               return <WalletCard key = {coin[0]} coin = {coin} />
+      
+        <Container>
+            <Drawer />
+            <Card>
+                {loading && response.map((coin) => {
+                return <WalletCard key = {coin[0]} coin = {coin} />
 
-            })}
-        </>
+                })}
+        </Card>
+       </Container>
     )
 }
 
