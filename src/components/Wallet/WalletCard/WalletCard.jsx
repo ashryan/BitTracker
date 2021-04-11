@@ -29,14 +29,14 @@ const WalletCard = (props) => {
           
         
             {price &&
-                <Card raised>
+                <Card raised style={{borderLeft:"#f50057 solid 3px", borderRight:"#f50057 solid 3px", marginBottom:"1%"}}>
                     <Grid container>
-                        <Grid item md={6}>
+                        <Grid item md={6} xs={12}>
                             <Typography style={{paddingTop:"20px"}} variant="h4">{props.coin[1].name}</Typography>
                             
                         </Grid>
                        
-                        <Grid item md={6}>
+                        <Grid item md={6} xs={12}>
                         <Typography style={{paddingTop:"20px"}}>
                             You have {props.coin[1].amount} {props.coin[1].name}
 

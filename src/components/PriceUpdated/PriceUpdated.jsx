@@ -61,7 +61,7 @@ export default function CustomizedSnackbars(props) {
       
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
-            {`Amount of ${props.coin.name} held updated to`}
+            {`Amount of ${props.coin.name} held updated`}
          
         </Alert>
       </Snackbar>

@@ -48,12 +48,13 @@ const Wallet = () => {
       
         <Container>
             <Drawer />
+           
             <Card>
                 {loading && response.map((coin) => {
                 return <WalletCard key = {coin[0]} coin = {coin} />
 
                 })}
-        </Card>
+            </Card>
   
        </Container>
     )
